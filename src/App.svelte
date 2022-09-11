@@ -13,7 +13,7 @@
 
 
 <SvelteToast {options}/>
-<Router history={memoryHistory}>
+<Router>
     <Route path="/">
         <Home/>
     </Route>
