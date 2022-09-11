@@ -1,0 +1,64 @@
+body {
+    background-color: #212121 !important;
+    font-family: Jost, serif !important;
+}
+
+h3, h4, h2 {
+    color: white !important;
+}
+
+button {
+    background-color: #ED6A5A;
+    width: 100%;
+    color: #fff;
+    height: 70px;
+    font-size: 20px !important;
+    border: none !important;
+    border-radius: 10px !important;
+    margin: 25px 5px !important;
+}
+
+.card {
+    background-color: #E6EBE0 !important;
+}
+
+.form-control, .form-select {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.sm-btn {
+    height: 50px !important;
+    width: 95%;
+}
+
+.form-select > option {
+    background-color: white !important;
+}
+
+.option {
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: #848484;
+    height: 60px;
+    padding-top: 15px;
+    cursor: pointer;
+    margin: 4px;
+}
+
+.option:hover {
+    background-color: teal;
+    color: white;
+    border: none;
+}
+
+.card-title > h3, h4 {
+    color: #212121;
+}
+
+.card-header > h3, h4 {
+    color: #212121 !important;
+}
+span{
+    color: #fff !important;
+}
