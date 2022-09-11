@@ -18,20 +18,23 @@
             },
             data: JSON.stringify(registerObj)
         }).then(r => {
-            axios({
-                url: `${baseUrl}api/token/`,
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                data: JSON.stringify(registerObj)
-            }).then(response => {
-                $userD = {
-                    email: registerObj.email,
-                    token: response.data.access
-                }
-                console.log(response.data)
-            })
+            if (r.status===200){
+                console.log(registerObj)
+                axios({
+                    url: `${baseUrl}api/token/`,
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    data: JSON.stringify(registerObj)
+                }).then(response => {
+                    $userD = {
+                        email: registerObj.email,
+                        token: response.data.access
+                    }
+                    console.log(response.data)
+                })
+            }
         })
     }
 </script>

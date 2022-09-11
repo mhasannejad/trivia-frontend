@@ -7,20 +7,7 @@
     export let challenge
 
     const joinF = () => {
-        axios({
-            url: `${baseUrl}api/challenge/join/`,
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + $userD.token
-            }, data: JSON.stringify({
-                'challenge_id': challenge.id
-            })
-        }).then(r => {
-            if (r.status === 202) {
-                navigate('/challenge/' + challenge.id)
-            }
-        })
+        navigate('/challenge/' + challenge.id)
     }
     let date = Date.now() - Date.parse(challenge.created_at)
     date = date / 1000 / 60
