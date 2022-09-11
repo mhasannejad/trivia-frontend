@@ -1,6 +1,6 @@
 <script>
     import {SvelteToast} from '@zerodevx/svelte-toast';
-    import {Route, Router} from "svelte-navigator";
+    import {createHistory, createMemorySource, Route, Router} from "svelte-navigator";
     import Home from "./pages/Home.svelte";
     import StartChallenge from "./pages/StartChallenge.svelte";
     import MainChallenge from "./pages/MainChallenge.svelte";
@@ -8,12 +8,12 @@
     import {closeModal, Modals} from "svelte-modals";
 
     const options = {}
-
+    const memoryHistory = createHistory(createMemorySource());
 </script>
 
 
 <SvelteToast {options}/>
-<Router>
+<Router history={memoryHistory}>
     <Route path="/">
         <Home/>
     </Route>
