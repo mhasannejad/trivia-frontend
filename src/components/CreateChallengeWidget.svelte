@@ -3,6 +3,7 @@
     import axios from "axios";
     import {baseUrl} from "../utils/consts.js";
     import {userD} from "../utils/auth.js";
+    import {navigate} from "svelte-navigator";
 
     let dispatcher = createEventDispatcher()
 
@@ -31,7 +32,7 @@
             })
         }).then(r => {
             if (r.status === 201) {
-                dispatcher('created')
+                navigate('/challenge/'+r.data.id)
             }
         })
     }

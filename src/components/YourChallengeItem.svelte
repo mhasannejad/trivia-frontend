@@ -21,7 +21,10 @@
     </div>
     <div class="card-body">
         <p>
-            {challenge.creator.email} created this challenge at { Math.round(date) } minutes ago
+            <b>{challenge.creator.email === $userD.email ? 'YOU' : challenge.creator.symbol_name}</b> created this challenge at { Math.round(date) } minutes ago <br>
+            {#if challenge.joiner}
+                <b>{challenge.joiner.email === $userD.email ? 'YOU' : challenge.joiner.symbol_name}</b> joined
+            {/if}
         </p>
 
         {#if !$userD}
@@ -30,7 +33,7 @@
             </button>
         {:else}
             <button class="sm-btn" on:click={joinF}>
-                countinue
+                continue
             </button>
         {/if}
 

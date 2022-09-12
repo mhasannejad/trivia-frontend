@@ -63,7 +63,7 @@
                 <LoginWidget/>
                 <RegisterWidget/>
             {:else }
-                <h4>your challenges</h4>
+                <h4 class="white-header">your challenges (not completed)</h4>
                 {#each userChallenges as i}
                     <YourChallengeItem challenge={i}/>
                 {/each}
@@ -78,7 +78,7 @@
                 }}/>
             {/if}
 
-            <h4>Available challenges</h4>
+            <h4 class="white-header">Available challenges</h4>
             {#each challenges as i}
                 <ChallengeItem challenge={i}/>
             {/each}

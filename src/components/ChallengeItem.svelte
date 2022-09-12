@@ -27,7 +27,8 @@
             toast.push('login please')
         }
     }
-    let date = Date.now() - Date.parse(challenge.created_at)
+    let date = NaN
+    date = Date.now() - Date.parse(challenge.created_at)
     date = date / 1000 / 60
     console.log(challenge.created_at)
 </script>
@@ -39,7 +40,7 @@
     </div>
     <div class="card-body">
         <p>
-            {challenge.creator.email} created this challenge at { Math.round(date) } minutes ago
+            <b>{challenge.creator.symbol_name}</b> created this challenge at { Math.round(date) } minutes ago
         </p>
 
         {#if !$userD}

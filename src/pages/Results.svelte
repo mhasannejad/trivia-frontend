@@ -49,9 +49,9 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-1"></div>
-        <div class="col-5 pt-5">
-            <div style="">
+        <div class="col-xl-1"></div>
+        <div class="col-xl-5 pt-5 col-sm-12">
+            <div style="display: none">
                 <span class="m-2">yours</span>
                 <SwitchButton bind:checked={mode}/>
                 <span class="m-2">all users</span>
@@ -63,7 +63,7 @@
                     <div class="card pt-4 my-3">
                         <div class="card-title">
                             <h4 style="text-align: center">
-                                {result.creator.email} vs {result.joiner.email}
+                                {result.creator.symbol_name} vs {result.joiner.symbol_name}
                             </h4>
 
                             <h3 style="text-align: center">
@@ -77,18 +77,18 @@
                 <RegisterWidget />
             {/if}
         </div>
-        <div class="col-5">
+        <div class="col-xl-5 col-sm-12">
             {#each ranking as user}
                 <div class="card my-2">
                     <div class="card-header">
                         <h4 style="text-align: center">
-                            {user.email}
+                            {user.symbol_name}
                         </h4>
                     </div>
                     <div class="card-body">
                         wins: {user.stats.wins} <br>
                         looses: {user.stats.losses} <br>
-                        total right questions: {user.points} <br>
+                        points: {user.points} <br>
                     </div>
                     <button class="sm-btn mx-2" on:click={()=>{
                         submitChallenge(user)
@@ -99,6 +99,6 @@
             {/each}
 
         </div>
-        <div class="col-1"></div>
+        <div class="col-xl-1"></div>
     </div>
 </div>

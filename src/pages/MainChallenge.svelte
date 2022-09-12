@@ -5,6 +5,7 @@
     import {baseUrl} from "../utils/consts.js";
     import {userD} from "../utils/auth.js";
     import {toast} from "@zerodevx/svelte-toast";
+    import {navigate} from "svelte-navigator";
 
     export let id;
     let challenge = null
@@ -41,8 +42,11 @@
             })
         }).then(r => {
             questions = questions.filter(i => i.id !== question_id)
+            if (questions.length ===0){
+                navigate('/results')
+            }
             if (r.status === 202) {
-                toast.push('submitted')
+                //toast.push('submitted')
             }
         })
     }
@@ -52,11 +56,11 @@
 {#if challenge}
     <div class="container">
         <div class="row">
-            <div class="col-3"></div>
-            <div class="col-6">
+            <div class="col-xl-3"></div>
+            <div class="col-xl-6 col-sm-12">
                 <div style="height: 100px;padding-top: 50px">
                     <h2 style="text-align: center">
-                        {challenge.creator.email} VS {challenge.joiner.email}
+                        {challenge.creator.symbol_name} VS {challenge.joiner.symbol_name}
                     </h2>
                 </div>
 
@@ -83,7 +87,7 @@
                     </div>
                 {/each}
             </div>
-            <div class="col-3"></div>
+            <div class="col-xl-3"></div>
         </div>
     </div>
 {/if}
