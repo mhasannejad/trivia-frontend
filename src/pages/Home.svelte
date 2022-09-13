@@ -17,11 +17,9 @@
                     Your Challenges
                 </button>
             </Link>
-            <Link to="/ranking">
-                <button>
-                    Ranking
-                </button>
-            </Link>
+
+
+
         </div>
         <div class="col-lg-4"></div>
     </div>

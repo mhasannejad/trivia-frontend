@@ -8,6 +8,7 @@
     import axios from "axios";
     import {baseUrl} from "../utils/consts.js";
     import YourChallengeItem from "../components/YourChallengeItem.svelte";
+    import JoinChallengeByCode from "../components/JoinChallengeByCode.svelte";
 
     let challenges = []
     let userChallenges = []
@@ -72,6 +73,10 @@
         </div>
         <div class="col-lg-5">
             {#if $userD.token}
+                <JoinChallengeByCode />
+                <h4 class="white-header">
+                    or
+                </h4>
                 <CreateChallengeWidget on:created={()=>{
                     refresh()
                     getUserChallenges()

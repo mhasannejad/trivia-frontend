@@ -66,7 +66,7 @@
                                 {result.creator.symbol_name} vs {result.joiner.symbol_name}
                             </h4>
 
-                            <h3 style="text-align: center">
+                            <h3 style="text-align: center;color: #212121!important;">
                                 {result.result.creator} - {result.result.joiner}
                             </h3>
                         </div>

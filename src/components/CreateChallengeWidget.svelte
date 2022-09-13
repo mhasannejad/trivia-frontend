@@ -18,8 +18,11 @@
         })
     })
 
+    let is_private = false
+
 
     const submitChallenge = () => {
+        console.log(is_private)
         axios({
             method: 'POST',
             url: `${baseUrl}api/challenge/create/`,
@@ -28,7 +31,8 @@
                 'Authorization': `Bearer ${$userD.token}`
             },
             data: JSON.stringify({
-                subject_id: selectedSubject
+                subject_id: selectedSubject,
+                private:is_private
             })
         }).then(r => {
             if (r.status === 201) {
@@ -50,7 +54,12 @@
                 {/each}
             </select>
         </div>
-
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" bind:checked={is_private}>
+            <label class="form-check-label" >
+                is private
+            </label>
+        </div>
         <button class="sm-btn" on:click={submitChallenge}>
             submit
         </button>

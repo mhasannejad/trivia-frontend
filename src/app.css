@@ -65,3 +65,11 @@ span{
 .white-header{
     color: white !important;
 }
+.black-header{
+    color: #212121 !important;
+}
+
+nav{
+    height: 50px!important;
+    background-color: #212121 !important;
+}

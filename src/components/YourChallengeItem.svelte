@@ -26,7 +26,10 @@
                 <b>{challenge.joiner.email === $userD.email ? 'YOU' : challenge.joiner.symbol_name}</b> joined
             {/if}
         </p>
-
+        {#if challenge.creator.email === $userD.email && challenge.private}
+            <br>
+            <p>invitation code (share this to your opponent): <code>{challenge.invitation_code}</code></p>
+        {/if}
         {#if !$userD}
             <button class="sm-btn">
                 create an account first

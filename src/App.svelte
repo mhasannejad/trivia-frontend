@@ -1,11 +1,20 @@
 <script>
     import {SvelteToast} from '@zerodevx/svelte-toast';
-    import {createHistory, createMemorySource, Route, Router} from "svelte-navigator";
+    import {createHistory, createMemorySource, Link, Route, Router} from "svelte-navigator";
     import Home from "./pages/Home.svelte";
     import StartChallenge from "./pages/StartChallenge.svelte";
     import MainChallenge from "./pages/MainChallenge.svelte";
     import Results from "./pages/Results.svelte";
     import {closeModal, Modals} from "svelte-modals";
+    import {
+        Collapse,
+        Navbar,
+        NavbarToggler,
+        NavbarBrand,
+        Nav,
+        NavItem,
+        NavLink
+    } from 'sveltestrap';
 
     const options = {}
     const memoryHistory = createHistory(createMemorySource());
@@ -13,7 +22,21 @@
 
 
 <SvelteToast {options}/>
+
+
 <Router>
+    <Navbar color="#212121" dark={true}>
+        <NavbarBrand href="/" class="me-auto">DrChallenge</NavbarBrand>
+        <Nav>
+            <NavItem>
+                <Link class="link-light nav-link" to="/challenge/all">Challenges</Link>
+
+            </NavItem>
+            <NavItem  class="nav-item">
+                <Link class="link-light nav-link" to="/results">Results</Link>
+            </NavItem>
+        </Nav>
+    </Navbar>
     <Route path="/">
         <Home/>
     </Route>
