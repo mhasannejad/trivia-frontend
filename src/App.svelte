@@ -5,7 +5,7 @@
     import StartChallenge from "./pages/StartChallenge.svelte";
     import MainChallenge from "./pages/MainChallenge.svelte";
     import Results from "./pages/Results.svelte";
-    import {closeModal, Modals} from "svelte-modals";
+    import {closeModal, Modals, openModal} from "svelte-modals";
     import {
         Collapse,
         Navbar,
@@ -15,6 +15,11 @@
         NavItem,
         NavLink
     } from 'sveltestrap';
+    import LabelPrescription from "./pages/LabelPrescription.svelte";
+    import ModeratePrescription from "./pages/ModeratePrescription.svelte";
+    import {userD} from "./utils/auth.js";
+    import LoginModal from "./components/LoginModal.svelte";
+    import RegisterModal from "./components/RegisterModal.svelte";
 
     const options = {}
     const memoryHistory = createHistory(createMemorySource());
@@ -32,9 +37,23 @@
                 <Link class="link-light nav-link" to="/challenge/all">Challenges</Link>
 
             </NavItem>
-            <NavItem  class="nav-item">
+            <NavItem class="nav-item">
                 <Link class="link-light nav-link" to="/results">Results</Link>
             </NavItem>
+            {#if $userD.token}
+                <NavItem class="nav-item">
+                    <a class="link-light nav-link" on:click={()=>{$userD={}}}>log out<i
+                            class="bi bi-box-arrow-right mx-2"></i></a>
+                </NavItem>
+            {:else}
+                <NavItem class="nav-item">
+                    <a class="link-light nav-link" on:click={()=>{openModal(LoginModal)}}>log in</a>
+                </NavItem>
+                <NavItem class="nav-item">
+                    <a class="link-light nav-link" on:click={()=>{openModal(RegisterModal)}}>register</a>
+                </NavItem>
+            {/if}
+
         </Nav>
     </Navbar>
     <Route path="/">
@@ -51,6 +70,14 @@
     <Route path="results">
         <Results/>
     </Route>
+    <Route path="/prescription/label">
+        <LabelPrescription/>
+    </Route>
+    {#if $userD.role === 1}
+        <Route path="/prescription/moderate">
+            <ModeratePrescription/>
+        </Route>
+    {/if}
 </Router>
 
 <Modals>

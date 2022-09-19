@@ -2,13 +2,14 @@
     import axios from "axios";
     import {baseUrl} from "../utils/consts.js";
     import {userD} from "../utils/auth.js";
+    import {createEventDispatcher} from "svelte";
 
     let registerObj = {
         email: '',
         password: ''
     }
 
-
+    let eventDispatcher = createEventDispatcher()
     const registerF = () => {
         axios({
             url: `${baseUrl}api/auth/register/`,
@@ -19,21 +20,8 @@
             data: JSON.stringify(registerObj)
         }).then(r => {
             if (r.status===200){
-                console.log(registerObj)
-                axios({
-                    url: `${baseUrl}api/token/`,
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    data: JSON.stringify(registerObj)
-                }).then(response => {
-                    $userD = {
-                        email: registerObj.email,
-                        token: response.data.access
-                    }
-                    console.log(response.data)
-                })
+                $userD = r.data
+                eventDispatcher('registered')
             }
         })
     }

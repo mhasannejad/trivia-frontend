@@ -73,3 +73,6 @@ nav{
     height: 50px!important;
     background-color: #212121 !important;
 }
+.nav-link{
+    cursor: pointer !important;
+}

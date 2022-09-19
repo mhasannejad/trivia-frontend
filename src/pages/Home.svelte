@@ -6,7 +6,7 @@
     <div class="row">
 
         <div class="col-lg-4"></div>
-        <div class="col-lg-4 col-sm-12" style="margin-top: 15%">
+        <div class="col-lg-4 col-sm-12" style="margin-top: 5%">
             <Link to="/challenge/all">
                 <button>
                     Start New Challenge
@@ -17,8 +17,16 @@
                     Your Challenges
                 </button>
             </Link>
-
-
+            <Link to="/prescription/label">
+                <button>
+                    Label Prescriptions
+                </button>
+            </Link>
+            <Link to="/prescription/moderate">
+                <button>
+                    Check Prescriptions (moderators only)
+                </button>
+            </Link>
 
         </div>
         <div class="col-lg-4"></div>

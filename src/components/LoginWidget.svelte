@@ -3,16 +3,17 @@
     import {baseUrl} from "../utils/consts.js";
     import {userD} from "../utils/auth.js";
     import {toast} from "@zerodevx/svelte-toast";
+    import {createEventDispatcher} from "svelte";
 
     let loginObj = {
         email: '',
         password: ''
     }
-
+    let eventDispatcher = createEventDispatcher()
     const loginF = async () => {
         try {
             await axios({
-                url: `${baseUrl}api/token/`,
+                url: `${baseUrl}api/auth/login/`,
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -20,11 +21,9 @@
                 data: JSON.stringify(loginObj)
             }).then(r => {
                 if(r.status===200){
-                    $userD = {
-                        email: loginObj.email,
-                        token: r.data.access
-                    }
-                    console.log(r.data)
+                    $userD = r.data
+
+                    eventDispatcher('loggedin')
                 }else{
 
                 }
