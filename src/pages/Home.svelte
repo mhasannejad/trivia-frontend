@@ -1,5 +1,6 @@
 <script>
     import {Link} from "svelte-navigator";
+    import {userD} from "../utils/auth.js";
 </script>
 
 <div class="container">
@@ -22,11 +23,14 @@
                     Label Prescriptions
                 </button>
             </Link>
-            <Link to="/prescription/moderate">
-                <button>
-                    Check Prescriptions (moderators only)
-                </button>
-            </Link>
+            {#if $userD.role === 1}
+                <Link to="/prescription/moderate">
+                    <button>
+                        Check Prescriptions (moderators only)
+                    </button>
+                </Link>
+            {/if}
+
 
         </div>
         <div class="col-lg-4"></div>
