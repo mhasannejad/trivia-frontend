@@ -76,3 +76,14 @@ nav{
 .nav-link{
     cursor: pointer !important;
 }
+.profile-container{
+    border-radius: 5px;
+    border-width: 3px;
+    border-style: dashed;
+    height: 700px;
+    border-color: white;
+    padding: 20px ;
+}
+.profile-container > h2{
+    font-size: 40px;
+}

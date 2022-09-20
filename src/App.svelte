@@ -1,6 +1,6 @@
 <script>
     import {SvelteToast} from '@zerodevx/svelte-toast';
-    import {createHistory, createMemorySource, Link, Route, Router} from "svelte-navigator";
+    import {createHistory, createMemorySource, Link, navigate, Route, Router} from "svelte-navigator";
     import Home from "./pages/Home.svelte";
     import StartChallenge from "./pages/StartChallenge.svelte";
     import MainChallenge from "./pages/MainChallenge.svelte";
@@ -20,6 +20,7 @@
     import {userD} from "./utils/auth.js";
     import LoginModal from "./components/LoginModal.svelte";
     import RegisterModal from "./components/RegisterModal.svelte";
+    import Profile from "./pages/Profile.svelte";
 
     const options = {}
     const memoryHistory = createHistory(createMemorySource());
@@ -41,6 +42,10 @@
                 <Link class="link-light nav-link" to="/results">Results</Link>
             </NavItem>
             {#if $userD.token}
+                <NavItem class="nav-item">
+                    <a class="link-light nav-link" on:click={()=>{navigate('/profile/'+$userD.id)}}>profile<i
+                            class="bi bi-bar-chart-line-fill mx-2"></i></a>
+                </NavItem>
                 <NavItem class="nav-item">
                     <a class="link-light nav-link" on:click={()=>{$userD={}}}>log out<i
                             class="bi bi-box-arrow-right mx-2"></i></a>
@@ -69,6 +74,9 @@
 
     <Route path="results">
         <Results/>
+    </Route>
+    <Route path="profile/:id" let:params>
+        <Profile id={params.id}/>
     </Route>
     <Route path="/prescription/label">
         <LabelPrescription/>
