@@ -31,7 +31,7 @@
             <div class="col-4  col-sm-12">
                 <div class="profile-container  text-center">
 
-                    <img src={'http://127.0.0.1:8000/media/'+user_stats.level.icon} alt=""  height="150px"> <br>
+                    <img src={`${baseUrl}media/`+user_stats.level.icon} alt=""  height="150px"> <br>
                     <h2 class="pb-2 pt-5">{user_stats.symbol_name} | {user_stats.level.title}</h2>
                     <h3 class="py-2">ranking: {user_stats.ranking} / {user_stats.total_users}</h3>
                     <h3 class="py-2">total point: {user_stats.points} </h3>

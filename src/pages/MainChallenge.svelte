@@ -6,6 +6,8 @@
     import {userD} from "../utils/auth.js";
     import {toast} from "@zerodevx/svelte-toast";
     import {navigate} from "svelte-navigator";
+    import {openModal} from "svelte-modals";
+    import ReportQuestionModal from "../components/ReportQuestionModal.svelte";
 
     export let id;
     let challenge = null
@@ -42,13 +44,17 @@
             })
         }).then(r => {
             questions = questions.filter(i => i.id !== question_id)
-            if (questions.length ===0){
+            if (questions.length === 0) {
                 navigate('/results')
             }
             if (r.status === 202) {
                 //toast.push('submitted')
             }
         })
+    }
+
+    const openReportModal = (questionId) => {
+        openModal(ReportQuestionModal, {questionId:questionId})
     }
 </script>
 
@@ -66,6 +72,16 @@
 
                 {#each questions as question (question)}
                     <div class="card p-3 my-2" animate:flip>
+                        <div class="row">
+                            <div class="col-4">
+                                <button on:click={()=>{
+                                    openReportModal(question.id)
+                                }} type="button" class="btn btn-outline-primary btn-sm ">Report Question (Good or
+                                    Bad)
+                                </button>
+                            </div>
+                            <div class="col-8"></div>
+                        </div>
                         <div class="card-title mb-3">
                             <p class="text-lg-center">
                                 {question.text}
@@ -84,6 +100,7 @@
 
 
                         </div>
+
                     </div>
                 {/each}
             </div>
