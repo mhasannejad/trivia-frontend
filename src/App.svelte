@@ -32,9 +32,9 @@
 
 <Router>
     <Navbar color="#212121" dark={true}>
-        <NavbarBrand on:click={()=>{
+        <a on:click={()=>{
             navigate('/')
-        }} class="me-auto">DrChallenge</NavbarBrand>
+        }} class="nav-link link-light fs-3 m-3">DrChallenge</a>
         <Nav>
             <NavItem>
                 <Link class="link-light nav-link" to="/challenge/all">Challenges</Link>
