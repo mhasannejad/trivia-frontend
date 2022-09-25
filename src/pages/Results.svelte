@@ -14,6 +14,8 @@
 
     let results = []
     let ranking = []
+    let searchUserEmail = ''
+
     onMount(() => {
         getUserResults()
         axios({
@@ -24,7 +26,7 @@
         })
     })
     const getUserResults = () => {
-        if($userD.token){
+        if ($userD.token) {
             axios({
                 url: `${baseUrl}api/challenge/result/mine/`,
                 method: 'GET',
@@ -39,18 +41,36 @@
     }
 
     const submitChallenge = (user) => {
-        if($userD.token){
-            openModal(ChallengeModal, { title: 'Challenge',joiner_id:user.id })
-        }else{
+        if ($userD.token) {
+            openModal(ChallengeModal, {title: 'Challenge', joiner_id: user.id})
+        } else {
             toast.push('login please')
         }
+    }
+
+    const searchUser = () => {
+        axios({
+            url: `${baseUrl}api/users/search/`,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: JSON.stringify({
+                user: searchUserEmail
+            })
+        }).then(r => {
+            if (r.status === 200) {
+                ranking = r.data
+            }
+
+        })
     }
 </script>
 
 <div class="container">
     <div class="row">
         <div class="col-xl-1"></div>
-        <div class="col-xl-5 pt-5 col-sm-12">
+        <div class="col-xl-5 pt-1 col-sm-12">
             <div style="display: none">
                 <span class="m-2">yours</span>
                 <SwitchButton bind:checked={mode}/>
@@ -72,12 +92,30 @@
                         </div>
                     </div>
                 {/each}
-                {:else}
-                <LoginWidget />
-                <RegisterWidget />
+            {:else}
+                <LoginWidget/>
+                <RegisterWidget/>
             {/if}
         </div>
         <div class="col-xl-5 col-sm-12">
+            <div class="card my-3 ">
+                <div class="card-header">
+                    Search user by email
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">User </label>
+                        <input bind:value={searchUserEmail} type="text" class="form-control"
+                               placeholder="dude@gmail.com or dude">
+                    </div>
+
+                    <button class="sm-btn" on:click={searchUser}>
+                        search
+                    </button>
+                </div>
+
+            </div>
+            <hr class="white-divider">
             {#each ranking as user}
                 <div class="card my-2">
                     <div class="card-header">
