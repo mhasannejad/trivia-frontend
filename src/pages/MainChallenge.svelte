@@ -54,7 +54,7 @@
     }
 
     const openReportModal = (questionId) => {
-        openModal(ReportQuestionModal, {questionId:questionId})
+        openModal(ReportQuestionModal, {questionId: questionId})
     }
 </script>
 
@@ -66,7 +66,11 @@
             <div class="col-xl-6 col-sm-12">
                 <div style="height: 100px;padding-top: 50px">
                     <h2 style="text-align: center">
-                        {challenge.creator.symbol_name} VS {challenge.joiner.symbol_name}
+                        {#if challenge.joiner.name === undefined}
+                            Waiting for someone to join
+                        {:else}
+                            {challenge.creator.symbol_name} VS {challenge.joiner.symbol_name}
+                        {/if}
                     </h2>
                 </div>
 

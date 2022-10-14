@@ -54,6 +54,8 @@
             userChallenges = r.data
         })
     }
+
+
 </script>
 
 <div class="container">

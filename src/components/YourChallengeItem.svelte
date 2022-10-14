@@ -12,6 +12,17 @@
     let date = Date.now() - Date.parse(challenge.created_at)
     date = date / 1000 / 60
     console.log(challenge.created_at)
+
+    let days = Math.round(date / (60 * 24))
+
+    let remainOfDay = date % (60 * 24)
+
+    let hours = Math.round(remainOfDay / 60)
+
+    let remainOfHours = remainOfDay % 60
+
+
+
 </script>
 
 
@@ -21,7 +32,8 @@
     </div>
     <div class="card-body">
         <p>
-            <b>{challenge.creator.email === $userD.email ? 'YOU' : challenge.creator.symbol_name}</b> created this challenge at { Math.round(date) } minutes ago <br>
+            <b>{challenge.creator.email === $userD.email ? 'YOU' : challenge.creator.symbol_name}</b> created this
+            challenge at {days} days and {hours} hours and {Math.round(remainOfHours)} mins<br>
             {#if challenge.joiner}
                 <b>{challenge.joiner.email === $userD.email ? 'YOU' : challenge.joiner.symbol_name}</b> joined
             {/if}
