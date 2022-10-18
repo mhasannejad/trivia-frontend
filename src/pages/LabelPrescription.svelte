@@ -52,6 +52,7 @@
         axios({
             url: `${baseUrl}drugs/prescription/random/`,
             method: 'GET',
+            timeout: 50000,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + $userD.token
