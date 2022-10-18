@@ -70,11 +70,11 @@
         axios({
             url: `${baseUrl}drugs/prescription/submit/drug/`,
             method: 'POST',
-            data:JSON.stringify({
-                prescription_id:current_prescription.id,
-                drugsubset_id:prescriptionFormObj.drug.id,
-                per_time:prescriptionFormObj.perTime,
-                count:prescriptionFormObj.count,
+            data: JSON.stringify({
+                prescription_id: current_prescription.id,
+                drugsubset_id: prescriptionFormObj.drug.id,
+                per_time: prescriptionFormObj.perTime,
+                count: prescriptionFormObj.count,
             }),
             headers: {
                 'Content-Type': 'application/json',
@@ -88,15 +88,15 @@
     }
 </script>
 
-<div class="container">
+<div class="container mt-5">
     <div class="row">
-        <div class="col-1"></div>
-        <div class="col-4">
+        <div class="col-1 col-md-1"></div>
+        <div class="col-4 col-sm-12 col-md-4">
             <img class="img-fluid rounded-2" src={`${baseUrl}`+current_prescription.image_url} alt="sample prescription"
                  width="500px">
         </div>
-        <div class="col-1"></div>
-        <div class="col-6">
+        <div class="col-1 col-md-1"></div>
+        <div class="col-6 col-sm-12 col-md-6">
             <button on:click={getRandomPrescriptionToLabel}>
                 next prescription
             </button>
