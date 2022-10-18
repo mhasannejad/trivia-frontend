@@ -90,15 +90,15 @@
     }
 </script>
 
-<div class="container mt-5">
+<div class="container " style="margin-top: 100px">
     <div class="row">
-        <div class="col-1 col-md-1"></div>
-        <div class="col-4 col-sm-12 col-md-4">
+        <div class=" col-md-1"></div>
+        <div class=" col-sm-12 col-md-4">
             <img class="img-fluid rounded-2" src={`${baseUrl}`+current_prescription.image_url} alt="sample prescription"
                  width="500px">
         </div>
-        <div class="col-1 col-md-1"></div>
-        <div class="col-6 col-sm-12 col-md-6">
+        <div class=" col-md-1"></div>
+        <div class="col-sm-12 col-md-6">
             <button on:click={getRandomPrescriptionToLabel}>
                 next prescription
             </button>
