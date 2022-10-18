@@ -15,9 +15,10 @@
         getRandomPrescriptionToLabel()
         axios({
             url: `${baseUrl}drugs/drug/list/`,
-            method: 'GEt',
+            method: 'GET',
         }).then((r) => {
             drugs = r.data
+            console.log(drugs)
         })
     })
     const extract = (item) => item.name;
@@ -40,7 +41,7 @@
             url: `${baseUrl}drugs/drug/subset/${drugname}/`,
             method: 'GET',
         }).then((r) => {
-            console.log('gere2')
+
             subsets = r.data
             //forms = r.data['form_list']
         })
@@ -106,7 +107,7 @@
                 </div>
                 <div class="card-body">
                     <div class="input-group">
-                        <Typeahead label="drugs" data={drugs} {extract}
+                        <Typeahead limit={3} label="drugs" data={drugs} {extract}
                                    on:select={({detail})=>{getDrugSubsets(detail.selected)}}/>
                         <select bind:value={prescriptionFormObj.drug} name="dose" id="dose" class="form-select"
                                 aria-label="dose">
