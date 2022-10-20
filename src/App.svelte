@@ -96,7 +96,7 @@
             <LabelPrescription/>
         </Route>
     {/if}
-    {#if $userD.role === 1}
+    {#if $userD.is_valid_to_moderate === true}
         <Route path="/prescription/moderate">
             <ModeratePrescription/>
         </Route>

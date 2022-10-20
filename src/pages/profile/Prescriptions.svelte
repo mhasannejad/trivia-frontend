@@ -45,7 +45,12 @@
                                     <p>order: {presitem.per_time} </p>
                                     <p>count: {presitem.count} </p>
                                     <p>commercial name: {presitem.trading_name} </p>
+                                    <p><b>verifier comments:</b></p>
+                                    {#each presitem.verifications as verification}
+                                        <p>{verification.verifier.symbol_name}: {verification.comment===''?'no comment':verification.comment}</p>
+                                    {/each}
                                 </div>
+
                             {/each}
                         </div>
                     </div>

@@ -28,6 +28,7 @@
         drug: '',
         perTime: '',
         count: '',
+        trading_name: '',
 
     }
 
@@ -92,12 +93,10 @@
 
 <div class="container " style="margin-top: 100px">
     <div class="row">
-        <div class=" col-md-1"></div>
-        <div class=" col-sm-12 col-md-4">
+        <div class=" col-sm-12 col-md-6">
             <img class="img-fluid rounded-2" src={`${baseUrl}`+current_prescription.image_url} alt="sample prescription"
                  width="500px">
         </div>
-        <div class=" col-md-1"></div>
         <div class="col-sm-12 col-md-6">
             <button on:click={getRandomPrescriptionToLabel}>
                 next prescription
@@ -108,7 +107,7 @@
                 </div>
                 <div class="card-body">
                     <div class="input-group">
-                        <Typeahead limit={3} label="drugs" data={drugs} {extract}
+                        <Typeahead limit={15} label="drugs" data={drugs} {extract}
                                    on:select={({detail})=>{getDrugSubsets(detail.selected)}}/>
                         <select bind:value={prescriptionFormObj.drug} name="dose" id="dose" class="form-select"
                                 aria-label="dose">
@@ -117,10 +116,15 @@
                             {/each}
                         </select>
 
+
+                    </div>
+                    <div class="input-group">
                         <input bind:value={prescriptionFormObj.perTime} type="text" class="form-control"
-                               placeholder="per time?">
+                               placeholder="prescription order">
                         <input bind:value={prescriptionFormObj.count} type="text" class="form-control"
                                placeholder="count">
+                        <input bind:value={prescriptionFormObj.trading_name} type="text" class="form-control"
+                               placeholder="commercial name">
                     </div>
                 </div>
 
@@ -139,8 +143,9 @@
                         <p>
                             dose: {prescription.drug.dose} <br>
                             form: {prescription.drug.drug_form} <br>
-                            per time: {prescription.perTime} <br>
+                            order: {prescription.perTime} <br>
                             count: {prescription.count} <br>
+                            commercial name: {prescription.count} <br>
                         </p>
                     </div>
                     <!--<div class="card-footer">
