@@ -146,7 +146,7 @@
                             form: {prescription.drug.drug_form} <br>
                             order: {prescription.perTime} <br>
                             count: {prescription.count} <br>
-                            commercial name: {prescription.count} <br>
+                            commercial name: {prescription.trading_name} <br>
                         </p>
                     </div>
                     <!--<div class="card-footer">
