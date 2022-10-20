@@ -78,6 +78,7 @@
                 drugsubset_id: prescriptionFormObj.drug.id,
                 per_time: prescriptionFormObj.perTime,
                 count: prescriptionFormObj.count,
+                trading_name: prescriptionFormObj.trading_name,
             }),
             headers: {
                 'Content-Type': 'application/json',
