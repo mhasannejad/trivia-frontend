@@ -79,6 +79,7 @@
 
 
             {#if $userD.token}
+                <h3>Your Challenges</h3>
                 {#each results as result}
                     <div class="card pt-4 my-3">
                         <div class="card-title">
@@ -116,11 +117,12 @@
 
             </div>
             <hr class="white-divider">
-            {#each ranking as user}
+            <h3>leaderboard</h3>
+            {#each ranking as user,index}
                 <div class="card my-2">
                     <div class="card-header">
                         <h4 style="text-align: center">
-                            {user.symbol_name}
+                            #{index+1} | {user.symbol_name}
                         </h4>
                     </div>
                     <div class="card-body">

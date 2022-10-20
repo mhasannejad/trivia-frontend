@@ -95,3 +95,49 @@ nav{
 .white-divider{
     color: white;
 }
+
+.dark-list{
+    margin-top: 150px;
+    background-color: #212121 !important;
+    margin-right: 10px !important;
+
+}
+.dark-list > li{
+    background-color: #212121 !important;
+    color: white !important;
+    border-color: white !important;
+    border-width: .1px !important;
+    min-height: 50px;
+    cursor: pointer;
+}
+.profile-presitem{
+    border-color: #212121;
+    border-style: dashed;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.stat-item{
+    border-style: dashed;
+    border-color: white;
+    border-width: 2px;
+    margin: 10px;
+    padding-top: 30px;
+    border-radius: 25px;
+    min-height: 150px;
+
+}
+
+.stat-item > h4{
+    color: rgba(255,255,255,0.8) !important;
+    font-size: 15px;
+    font-weight: lighter;
+}
+@media only screen and(min-width: 720px) {
+    .dark-list{
+        position: fixed;
+        min-width: 250px;
+    }
+}

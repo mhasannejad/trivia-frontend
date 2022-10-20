@@ -83,10 +83,10 @@
                                     </p>
                                 </div>
                                 <div class="card-footer row d-flex justify-content-between">
-                                    <button class="btn-sm btn-danger sm-btn col-md-5 mx-2" on:click={()=>{addVerification(prescription.id,true)}}>
+                                    <button class="fs-6 btn-danger sm-btn col-md-5 mx-2" on:click={()=>{addVerification(prescription.id,true)}}>
                                         is correct
                                     </button>
-                                    <button class="btn-sm btn-danger sm-btn col-md-5 mx-2" on:click={()=>{addVerification(prescription.id,false)}}>
+                                    <button class="fs-6 btn-danger sm-btn col-md-5 mx-2" on:click={()=>{addVerification(prescription.id,false)}}>
                                         is BS
                                     </button>
                                 </div>

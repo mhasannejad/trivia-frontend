@@ -21,6 +21,9 @@
     import LoginModal from "./components/LoginModal.svelte";
     import RegisterModal from "./components/RegisterModal.svelte";
     import Profile from "./pages/Profile.svelte";
+    import MyProfile from "./pages/ProfileLayout.svelte";
+    import Stats from "./pages/profile/Stats.svelte";
+    import Prescriptions from "./pages/profile/Prescriptions.svelte";
 
     const options = {}
     const memoryHistory = createHistory(createMemorySource());
@@ -41,11 +44,14 @@
 
             </NavItem>
             <NavItem class="nav-item">
-                <Link class="link-light nav-link" to="/results">Results</Link>
+                <Link class="link-light nav-link" to="/results">Leaderboard</Link>
+            </NavItem>
+            <NavItem class="nav-item">
+                <Link class="link-light nav-link" to="/mine/profile/stats">Your Profile</Link>
             </NavItem>
             {#if $userD.token}
                 <NavItem class="nav-item">
-                    <a class="link-light nav-link" on:click={()=>{navigate('/profile/'+$userD.id)}}>profile<i
+                    <a class="link-light nav-link" on:click={()=>{navigate('/profile/'+$userD.id)}}>Share Card<i
                             class="bi bi-bar-chart-line-fill mx-2"></i></a>
                 </NavItem>
                 <NavItem class="nav-item">
@@ -66,23 +72,30 @@
     <Route path="/">
         <Home/>
     </Route>
-    <Route path="challenge/all">
-        <StartChallenge/>
-    </Route>
+    {#if $userD.token}
+        <Route path="challenge/all">
+            <StartChallenge/>
+        </Route>
 
-    <Route path="challenge/:id" let:params>
-        <MainChallenge id={params.id}/>
-    </Route>
-
-    <Route path="results">
-        <Results/>
-    </Route>
-    <Route path="profile/:id" let:params>
-        <Profile id={params.id}/>
-    </Route>
-    <Route path="/prescription/label">
-        <LabelPrescription/>
-    </Route>
+        <Route path="challenge/:id" let:params>
+            <MainChallenge id={params.id}/>
+        </Route>
+        <Route path="mine/profile/stats" >
+            <Stats />
+        </Route>
+        <Route path="mine/profile/prescription" >
+            <Prescriptions />
+        </Route>
+        <Route path="results">
+            <Results/>
+        </Route>
+        <Route path="profile/:id" let:params>
+            <Profile id={params.id}/>
+        </Route>
+        <Route path="/prescription/label">
+            <LabelPrescription/>
+        </Route>
+    {/if}
     {#if $userD.role === 1}
         <Route path="/prescription/moderate">
             <ModeratePrescription/>
