@@ -122,8 +122,14 @@
                     <div class="input-group">
                         <input bind:value={prescriptionFormObj.perTime} type="text" class="form-control"
                                placeholder="prescription order">
+
+
+                    </div>
+                    <div class="input-group">
                         <input bind:value={prescriptionFormObj.count} type="text" class="form-control"
                                placeholder="count">
+                    </div>
+                    <div class="input-group">
                         <input bind:value={prescriptionFormObj.trading_name} type="text" class="form-control"
                                placeholder="commercial name">
                     </div>

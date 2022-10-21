@@ -55,7 +55,7 @@
                             class="bi bi-bar-chart-line-fill mx-2"></i></a>
                 </NavItem>
                 <NavItem class="nav-item">
-                    <a class="link-light nav-link" on:click={()=>{$userD={}}}>log out<i
+                    <a class="link-light nav-link" on:click={()=>{$userD={}}}>log out ({$userD.symbol_name})<i
                             class="bi bi-box-arrow-right mx-2"></i></a>
                 </NavItem>
             {:else}
