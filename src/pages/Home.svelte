@@ -18,6 +18,11 @@
                     Your Challenges
                 </button>
             </Link>
+            <Link to="/pharmacists">
+                <button>
+                    Pharmacists Leaderboard
+                </button>
+            </Link>
             <Link to="/prescription/label">
                 <button>
                     Label Prescriptions

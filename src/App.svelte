@@ -24,6 +24,7 @@
     import MyProfile from "./pages/ProfileLayout.svelte";
     import Stats from "./pages/profile/Stats.svelte";
     import Prescriptions from "./pages/profile/Prescriptions.svelte";
+    import PharmacistLeaderBoard from "./pages/PharmacistLeaderBoard.svelte";
 
     const options = {}
     const memoryHistory = createHistory(createMemorySource());
@@ -76,7 +77,9 @@
         <Route path="challenge/all">
             <StartChallenge/>
         </Route>
-
+        <Route path="pharmacists">
+            <PharmacistLeaderBoard />
+        </Route>
         <Route path="challenge/:id" let:params>
             <MainChallenge id={params.id}/>
         </Route>
